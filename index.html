@@ -243,7 +243,106 @@ Update Xiaomi Redmi,Xiaomi Redmi,repiar imei,fix imei yok,Fix Problem,RePair ime
       
   <!--Copyright Social  meida End//-->
 
-
+ <!--Bubble Effects Start //-->
+  
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Bubble Animation</title>
+      <style>
+          /* Inline CSS */
+  
+          body, html {
+              margin: 0;
+              padding: 0;
+              height: 100%;
+              width: 100%;
+              background: transparent; /* Transparent background for the page */
+              overflow: auto; /* Allow scrolling */
+          }
+  
+          #bubble-container {
+              position: fixed; /* Ensure bubbles overlay on top of everything */
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              pointer-events: none; /* Bubbles do not interfere with user interaction */
+              overflow: hidden; /* Only hide overflow within the bubble container */
+          }
+  
+          .bubble {
+              position: absolute;
+              border-radius: 50%;
+              background: rgba(255, 255, 255, 0.6); /* Semi-transparent bubble background */
+              border: 2px solid; /* Visible border for contrast */
+              opacity: 0;
+          }
+  
+          @keyframes rise {
+              0% {
+                  transform: translateY(100vh);
+                  opacity: 1;
+              }
+              100% {
+                  transform: translateY(-100vh);
+                  opacity: 0;
+              }
+          }
+      </style>
+  </head>
+  <body>
+      <div id="bubble-container"></div>
+  
+      <script>
+          // Inline JavaScript
+  
+          document.addEventListener('DOMContentLoaded', () => {
+              const container = document.getElementById('bubble-container');
+              
+              function createBubble() {
+                  const bubble = document.createElement('div');
+                  bubble.className = 'bubble';
+                  
+                  // Random size
+                  const size = Math.random() * 50 + 20; // Size between 20px and 70px
+                  bubble.style.width = `${size}px`;
+                  bubble.style.height = `${size}px`;
+  
+                  // Random position
+                  const startX = Math.random() * (window.innerWidth - size);
+                  bubble.style.left = `${startX}px`;
+                  bubble.style.bottom = `-${size}px`; // Start below the view
+  
+                  // Random color for background
+                  const color = `hsl(${Math.random() * 360}, 100%, 80%)`;
+                  bubble.style.backgroundColor = color;
+  
+                  // Random color for border
+                  const borderColor = `hsl(${Math.random() * 360}, 100%, 80%)`;
+                  bubble.style.borderColor = borderColor;
+  
+                  // Append bubble to container
+                  container.appendChild(bubble);
+  
+                  // Animate bubble
+                  bubble.style.animation = `rise ${Math.random() * 5 + 5}s linear forwards`;
+  
+                  // Remove bubble after animation
+                  bubble.addEventListener('animationend', () => {
+                      container.removeChild(bubble);
+                  });
+              }
+  
+              // Create bubbles at regular intervals
+              setInterval(createBubble, 300);
+          });
+      </script>
+  </body>
+  </html>
+  <!--Bubble Effects End//-->
 
 <body  class="svg-light default tpl-index     page-index  cart">
 
